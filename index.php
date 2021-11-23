@@ -7,8 +7,16 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Welcome</h1>
+    <h1>Welcome to the Covid-19 Database</h1>
     <p>Choose one of the following links</p>
-    <a href="./employees/">Employees</a>
+    <a href="./people/">People</a>  <br>
+    <a href="./worker/">Workers</a> <br>
+    <a href="./facility/">Facilities</a> <br>
+    <a href="./assignments/">Assignments</a> <br>
+    <a href="./vaccineType/">Vaccine Types</a> <br>
+    <a href="./infectionVariant/">Infection Variants</a> <br>
+    <a href="./ageGroup/">Age Groups</a> <br>
+    <a href="./province/">Province</a> <br>
+    <a href="./appointment/">Appointments</a>
 </body>
 </html>
