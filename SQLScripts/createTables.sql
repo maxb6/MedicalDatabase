@@ -22,7 +22,7 @@ CREATE TABLE comp353.worker (
     last_name varchar(255) not null,
     ssn int,
     hourly_wage int,
-    worker_type int,
+    worker_type varchar(255),
     is_eligible_to_vaccinate varchar(255)
 );
 
@@ -57,7 +57,8 @@ CREATE TABLE comp353.facility(
     facility_type varchar(255),
     capacity int,
     operating_hours varchar(255),
-    manager varchar(255),
+    operating_days varchar(255),
+    manager_id int,
     appointment_type varchar(255)
 );
 

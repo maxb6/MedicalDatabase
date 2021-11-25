@@ -1,6 +1,6 @@
 <?php require_once '../database.php';
 
-$statement = $conn->prepare('SELECT * FROM rnc353_2.EmployeeInformation AS employees');
+$statement = $conn->prepare('SELECT * FROM comp353.worker AS worker');
 $statement->execute();
 ?>
 
@@ -14,23 +14,42 @@ $statement->execute();
     <title>Document</title>
 </head>
 <body>
-    <h1>List of employees</h1>
+    <h1>List of Workers </h1>
+    <a href="./create.php">Add a new Worker</a>
     <table>
         <thead>
             <tr>
-                <td>Employee Id </td>
-                <td>Current facilities </td>
-                <td>Work start date </td>
-                <td>Work end date</td>
-                <td>Worker type</td>
-                <td>Vaccination status </td>
+                <td>Worker Id </td>
+                <td>First Name </td>
+                <td>Last Name </td>
+                <td>Social Security Number</td>
+                <td>Hourly Wage</td>
+                <td>Worker Type</td>
+                <td>Allowed to Vaccinate</td>
             </tr>
         </thead>
         <tbody>
+            <?php while ($row = $statement->fetch(PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT)) { ?>
+                <tr>
+                    <td><?= $row["id"] ?></td>
+                    <td><?= $row["first_name"] ?></td>
+                    <td><?= $row["last_name"] ?></td>
+                    <td><?= $row["ssn"] ?></td>
+                    <td><?= $row["hourly_wage"] ?></td>
+                    <td><?= $row["worker_type"] ?></td>
+                    <td><?= $row["is_eligible_to_vaccinate"] ?></td>
+                    <td>
+                        <a href="./show.php?id=<?=$row["id"]?>">Show</a>
+                        <a href="../../comp353-mainProject/assignments/index.php?id=<?=$row["id"]?>">Assignments</a>
+                        <a href="./edit.php?id=<?=$row["id"]?>">Edit</a>
+                        <a href="./delete.php?id=<?=$row["id"]?>">Delete</a>
+                    </td>
+                </tr>
+            <?php } ?>
+
         </tbody>  
         
     </table>
-
-    <a href="./book/">Employees Section</a>
+    <a href="../">Back to Homepage</a>
 </body>
 </html>
