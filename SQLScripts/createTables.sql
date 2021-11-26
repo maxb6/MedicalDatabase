@@ -28,7 +28,9 @@ CREATE TABLE comp353.worker (
 
 CREATE TABLE comp353.infection_history(
     id int primary key,
-    variant_name varchar(255)
+    person_id int,
+    variant_name varchar(255),
+    infection_date date
 );
 
 CREATE TABLE comp353.age_group(
@@ -52,7 +54,7 @@ CREATE TABLE comp353.facility(
     id int AUTO_INCREMENT primary key,
     facility_name varchar(255),
     street_address varchar(255),
-    phone_number int,
+    phone_number varchar(255),
     web_address varchar(255),
     facility_type varchar(255),
     capacity int,
