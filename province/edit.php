@@ -1,19 +1,21 @@
 <?php require_once '../database.php';
 $TITLE = "Edit an Vaccine type";
 
-$variants = $conn->prepare("SELECT * FROM comp353.vaccine_type AS vaccine_type WHERE vaccine_type.id = :id");
+$variants = $conn->prepare("SELECT * FROM comp353.province AS province WHERE province.id = :id");
 $variants->bindParam(":id", $_GET["id"]);
 $variants->execute();
 $variant = $variants->fetch(PDO::FETCH_ASSOC);
 
 
-if(isset($_POST["vaccine_name"]) && isset($_POST["id"])
+if(isset($_POST["province_name"]) && isset($_POST["age_group"]) && isset($_POST["id"])
     ) {  
-    $statement = $conn->prepare("UPDATE comp353.vaccine_type SET id = :id, 
-                                                        vaccine_name = :vaccine_name
+    $statement = $conn->prepare("UPDATE comp353.province SET id = :id, 
+                                                        province_name = :province_name,
+                                                        age_group = :age_group
                                                         WHERE id = :id;");
                                 
-    $statement->bindParam(':vaccine_name', $_POST["vaccine_name"]);
+    $statement->bindParam(':province_name', $_POST["province_name"]);
+    $statement->bindParam(':age_group', $_POST["age_group"]);
     $statement->bindParam(':id', $_POST["id"]);
     
 
@@ -40,8 +42,10 @@ if(isset($_POST["vaccine_name"]) && isset($_POST["id"])
 <body>
 <h1>Edit Vaccine Type</h1>
     <form action="./edit.php" method="post">
-        <label for="vaccine_name">Vaccine Name</label><br>
-        <input type="text" name="vaccine_name" id="vaccine_name" value="<?= $variant["vaccine_name"] ?>"> <br>
+        <label for="province_name">Province Name</label><br>
+        <input type="text" name="province_name" id="province_name" value="<?= $variant["province_name"] ?>"> <br>
+        <label for="age_group">Age Group</label><br>
+        <input type="text" name="age_group" id="age_group" value="<?= $variant["age_group"] ?>"> <br>
         <input type="hidden" name="id" id="id" value="<?= $variant["id"] ?>"> <br>
         <button type="update">Update</button>
     </form>

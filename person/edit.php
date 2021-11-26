@@ -97,7 +97,7 @@ if(isset($_POST["first_name"]) && isset($_POST["last_name"]) && isset($_POST["da
         <input type="number" name="age_group" id="age_group" value="<?= $person["age_group"] ?>"> <br>
         <input type="hidden" name="id" id="id" value="<?= $person["id"] ?>"> <br>
         <button type="submit">Update</button>
-    </form>
+    </form>+
     <a href="./">Back to Person List</a>
 </body>
 </html>
