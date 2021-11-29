@@ -54,6 +54,7 @@ CREATE TABLE comp353.facility(
     id int AUTO_INCREMENT primary key,
     facility_name varchar(255),
     street_address varchar(255),
+    province varchar(255),
     phone_number varchar(255),
     web_address varchar(255),
     facility_type varchar(255),
@@ -67,14 +68,15 @@ CREATE TABLE comp353.facility(
 CREATE TABLE comp353.appointment(
     id int AUTO_INCREMENT primary key,
     facility_name varchar(255),
+    employee_id int,
     first_name varchar(255),
     last_name varchar(255),
     medicare_number int,
     appointment_date date,
-    appointment_time time,
+    appointment_time int ,
     vaccine_type varchar(255),
     dose_number int,
-    lot varchar(255)
+    lot int
 );
 
 CREATE TABLE comp353.vaccine_type(
