@@ -44,6 +44,8 @@ if(isset($_POST["facility_name"]) && isset($_POST["street_address"]) && isset($_
     <form action="./create.php" method="post">
         <label for="facility_name">Facility Name</label><br>
         <input type="text" name="facility_name" id="facility_name"> <br>
+        <label for="street_address">Street Address</label><br>
+        <input type="text" name="street_address" id="street_address"> <br>
         <label for="phone_number">Phone Number</label><br>
         <input type="text" name="phone_number" id="phone_number"> <br>
         <label for="web_address">Web Address</label><br>
