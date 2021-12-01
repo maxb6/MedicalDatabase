@@ -27,7 +27,7 @@ CREATE TABLE comp353.worker (
 );
 
 CREATE TABLE comp353.infection_history(
-    id int primary key,
+    id int AUTO_INCREMENT primary key,
     person_id int,
     variant_name varchar(255),
     infection_date date
@@ -40,7 +40,7 @@ CREATE TABLE comp353.age_group(
 );
 
 CREATE Table comp353.infection_variant(
-    id int primary key,
+    id int AUTO_INCREMENT primary key,
     variant_name varchar(255)
 );
 
@@ -70,10 +70,12 @@ CREATE TABLE comp353.appointment(
     facility_name varchar(255),
     employee_id int,
     first_name varchar(255),
+    middle_initial char(1),
     last_name varchar(255),
     medicare_number int,
+    passport_number int,
     appointment_date date,
-    appointment_time int ,
+    appointment_time time ,
     vaccine_type varchar(255),
     dose_number int,
     lot int

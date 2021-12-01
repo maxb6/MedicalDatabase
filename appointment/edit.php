@@ -7,16 +7,18 @@ $appointments->execute();
 $appointment = $appointments->fetch(PDO::FETCH_ASSOC);
 
 
-if(isset($_POST["facility_name"]) && isset($_POST["employee_id"]) && isset($_POST["first_name"]) 
-&& isset($_POST["last_name"]) && isset($_POST["medicare_number"]) && isset($_POST["appointment_date"]) 
+if(isset($_POST["facility_name"]) && isset($_POST["employee_id"]) && isset($_POST["first_name"]) && isset($_POST["middle_initial"]) 
+&& isset($_POST["last_name"]) && isset($_POST["medicare_number"]) && isset($_POST["passport_number"]) && isset($_POST["appointment_date"]) 
 && isset($_POST["appointment_time"]) && isset($_POST["vaccine_type"]) && isset($_POST["dose_number"]) && isset($_POST["lot"]) && isset($_POST["id"])
 ) {
 
     $statement = $conn->prepare("UPDATE comp353.appointment SET facility_name = :facility_name, 
                                                         employee_id = :employee_id, 
                                                         first_name = :first_name,
+                                                        middle_initial = :middle_initial,
                                                         last_name = :last_name,
                                                         medicare_number = :medicare_number, 
+                                                        passport_number = :passport_number,
                                                         appointment_date = :appointment_date,
                                                         appointment_time = :appointment_time,
                                                         vaccine_type = :vaccine_type, 
@@ -27,8 +29,10 @@ if(isset($_POST["facility_name"]) && isset($_POST["employee_id"]) && isset($_POS
     $statement->bindParam(':facility_name', $_POST["facility_name"]);
     $statement->bindParam(':employee_id', $_POST["employee_id"]);
     $statement->bindParam(':first_name', $_POST["first_name"]);
+    $statement->bindParam(':middle_initial', $_POST["middle_initial"]);
     $statement->bindParam(':last_name', $_POST["last_name"]);
     $statement->bindParam(':medicare_number', $_POST["medicare_number"]);
+    $statement->bindParam(':passport_number', $_POST["passport_number"]);
     $statement->bindParam(':appointment_date', $_POST["appointment_date"]);
     $statement->bindParam(':appointment_time', $_POST["appointment_time"]);
     $statement->bindParam(':vaccine_type', $_POST["vaccine_type"]);
@@ -63,14 +67,18 @@ if(isset($_POST["facility_name"]) && isset($_POST["employee_id"]) && isset($_POS
         <input type="number" name="employee_id" id="employee_id" value="<?= $appointment["employee_id"] ?>"> <br>
         <label for="first_name">First Name</label><br>
         <input type="text" name="first_name" id="first_name" value="<?= $appointment["first_name"] ?>"> <br>
+        <label for="middle_initial">Middle Initial</label><br>
+        <input type="text" name="middle_initial" id="middle_initial" value="<?= $appointment["middle_initial"] ?>"> <br>
         <label for="last_name">Last Name</label><br>
         <input type="text" name="last_name" id="last_name" value="<?= $appointment["last_name"] ?>"> <br>
         <label for="medicare_number">Medicare Number</label><br>
         <input type="text" name="medicare_number" id="medicare_number" value="<?= $appointment["medicare_number"] ?>"> <br>
+        <label for="passport_number">Passport Number</label><br>
+        <input type="number" name="passport_number" id="passport_number" value="<?= $appointment["passport_number"] ?>"> <br>
         <label for="appointment_date">Appointment Date</label><br>
         <input type="date" name="appointment_date" id="appointment_date" value="<?= $appointment["appointment_date"] ?>"> <br>
         <label for="appointment_time">Appointment Time</label><br>
-        <input type="number" name="appointment_time" id="appointment_time" value="<?= $appointment["appointment_time"] ?>"> <br>
+        <input type="time" name="appointment_time" id="appointment_time" value="<?= $appointment["appointment_time"] ?>"> <br>
         <label for="vaccine_type">Vaccine Type</label><br>
         <input type="text" name="vaccine_type" id="vaccine_type" value="<?= $appointment["vaccine_type"] ?>"> <br>
         <label for="dose_number">Dose Number</label><br>

@@ -40,7 +40,7 @@ $statement->execute();
                     <td><?= $row["is_eligible_to_vaccinate"] ?></td>
                     <td>
                         <a href="./show.php?id=<?=$row["id"]?>">Show</a>
-                        <a href="../../comp353-mainProject/assignments/index.php?id=<?=$row["id"]?>">Assignments</a>
+                        <a href="assignments2/index.php?id=<?=$row["id"]?>">Assignments</a>
                         <a href="./edit.php?id=<?=$row["id"]?>">Edit</a>
                         <a href="./delete.php?id=<?=$row["id"]?>">Delete</a>
                     </td>

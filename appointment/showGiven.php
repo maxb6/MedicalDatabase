@@ -1,7 +1,10 @@
 <?php require_once '../database.php';
 
-$statement = $conn->prepare('SELECT * FROM comp353.appointment AS appointment');
+$statement = $conn->prepare('SELECT * FROM comp353.appointment AS appointment WHERE appointment_date > :date1  AND :date2 > appointment_date');
+$statement->bindParam(":date1", $_GET["date1"]);
+$statement->bindParam(":date2", $_GET["date2"]);
 $statement->execute();
+
 ?>
 
 
@@ -14,8 +17,8 @@ $statement->execute();
     <title>Document</title>
 </head>
 <body>
+
     <h1>List of Appointments </h1>
-    <a href="./create.php">Add a new appointment</a>
     <table>
         <thead>
             <tr>
@@ -51,18 +54,12 @@ $statement->execute();
                     <td><?= $row["dose_number"] ?></td>
                     <td><?= $row["lot"] ?></td>
                     <td>
-                        <a href="./show.php?id=<?=$row["id"]?>">Show</a>
-                        <a href="./edit.php?id=<?=$row["id"]?>">Edit</a>
-                        <a href="./delete.php?id=<?=$row["id"]?>">Delete</a>
-                    </td>
                 </tr>
             <?php } ?>
 
         </tbody>  
         
     </table>
-    <a href="./pickDates.php">Show Appointments within Time Interval</a> <br><br>
-    <a href="./pickDates2.php">Show Earliest Appointment</a> <br><br>
-    <a href="../">Back to Homepage</a>
+    <a href="././">Back to Appointment List</a>
 </body>
 </html>
