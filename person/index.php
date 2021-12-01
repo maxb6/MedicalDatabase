@@ -57,6 +57,7 @@ $statement->execute();
                     <td><?= $row["age_group"] ?></td>
                     <td>
                         <a href="./show.php?id=<?=$row["id"]?>">Show</a>
+                        <a href="./infectionHistory2/index.php?id=<?=$row["id"]?>">Infection History</a>
                         <a href="./edit.php?id=<?=$row["id"]?>">Edit</a>
                         <a href="./delete.php?id=<?=$row["id"]?>">Delete</a>
                     </td>

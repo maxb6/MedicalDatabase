@@ -1,19 +1,21 @@
 <?php require_once '../database.php';
 $TITLE = "Add a appointment";
 
-if(isset($_POST["facility_name"]) && isset($_POST["employee_id"]) && isset($_POST["first_name"]) 
-&& isset($_POST["last_name"]) && isset($_POST["medicare_number"]) && isset($_POST["appointment_date"]) 
+if(isset($_POST["facility_name"]) && isset($_POST["employee_id"]) && isset($_POST["first_name"]) && isset($_POST["middle_initial"]) 
+&& isset($_POST["last_name"]) && isset($_POST["medicare_number"]) && isset($_POST["passport_number"]) && isset($_POST["appointment_date"]) 
 && isset($_POST["appointment_time"]) && isset($_POST["vaccine_type"]) && isset($_POST["dose_number"]) && isset($_POST["lot"])
 ) {
     
-    $appointment = $conn->prepare("INSERT INTO comp353.appointment (facility_name, employee_id, first_name, last_name, medicare_number, appointment_date, appointment_time, vaccine_type, dose_number, lot)
-    VALUES (:facility_name, :employee_id, :first_name, :last_name, :medicare_number, :appointment_date, :appointment_time, :vaccine_type, :dose_number, :lot);");
+    $appointment = $conn->prepare("INSERT INTO comp353.appointment (facility_name, employee_id, first_name, middle_initial, last_name, medicare_number, passport_number, appointment_date, appointment_time, vaccine_type, dose_number, lot)
+    VALUES (:facility_name, :employee_id, :first_name, :middle_initial, :last_name, :medicare_number, :passport_number, :appointment_date, :appointment_time, :vaccine_type, :dose_number, :lot);");
     
     $appointment->bindParam(':facility_name', $_POST["facility_name"]);
     $appointment->bindParam(':employee_id', $_POST["employee_id"]);
     $appointment->bindParam(':first_name', $_POST["first_name"]);
+    $appointment->bindParam(':middle_initial', $_POST["middle_initial"]);
     $appointment->bindParam(':last_name', $_POST["last_name"]);
     $appointment->bindParam(':medicare_number', $_POST["medicare_number"]);
+    $appointment->bindParam(':passport_number', $_POST["passport_number"]);
     $appointment->bindParam(':appointment_date', $_POST["appointment_date"]);
     $appointment->bindParam(':appointment_time', $_POST["appointment_time"]);
     $appointment->bindParam(':vaccine_type', $_POST["vaccine_type"]);
@@ -43,14 +45,18 @@ if(isset($_POST["facility_name"]) && isset($_POST["employee_id"]) && isset($_POS
         <input type="number" name="employee_id" id="employee_id"> <br>
         <label for="first_name">First Name</label><br>
         <input type="text" name="first_name" id="first_name"> <br>
+        <label for="middle_initial">Middle Initial</label><br>
+        <input type="text" name="middle_initial" id="middle_initial"> <br>
         <label for="last_name">Last Name</label><br>
         <input type="text" name="last_name" id="last_name"> <br>
         <label for="medicare_number">Medicare Number</label><br>
-        <input type="text" name="medicare_number" id="medicare_number"> <br>
+        <input type="number" name="medicare_number" id="medicare_number"> <br>
+        <label for="passport_number">Passport Number</label><br>
+        <input type="number" name="passport_number" id="passport_number"> <br>
         <label for="appointment_date">Appointment Date</label><br>
         <input type="date" name="appointment_date" id="appointment_date"> <br>
         <label for="appointment_time">Appointment Time</label><br>
-        <input type="number" name="appointment_time" id="appointment_time"> <br>
+        <input type="time" name="appointment_time" id="appointment_time"> <br>
         <label for="vaccine_type">Vaccine Type</label><br>
         <input type="text" name="vaccine_type" id="vaccine_type"> <br>
         <label for="dose_number">Dose Number</label><br>
